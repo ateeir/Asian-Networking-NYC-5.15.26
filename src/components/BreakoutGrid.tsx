@@ -3,129 +3,7 @@ import { BrutalCard } from './BrutalCard';
 import { Users, Globe, Smile, Zap, MapPin, Heart } from 'lucide-react';
 import { motion } from 'motion/react';
 
-const BREAKOUT_THEMES = [
-  {
-    id: 'signin',
-    title: 'Signing In',
-    icon: '✍️',
-    description: 'Welcome! Grab your name tag and start chatting.',
-    details: 'The official kickoff. Use this time to meet the organizers and find your orientation.',
-    groups: ['First Event', 'Returning', 'Referral', 'Social Media'],
-    subtopics: ['Name Tags', 'Agenda Check', 'Event Vibe'],
-    color: 'bg-brand-yellow text-black',
-    tag: '6:00 PM START'
-  },
-  {
-    id: 'scavenger',
-    title: 'Scavenger Hunt',
-    icon: '🔍',
-    description: 'Match by name tag color or marker color!',
-    details: 'Colors are your guide. Find a match for your name tag color or the marker you used. Great way to meet everyone!',
-    groups: ['Red Match', 'Blue Match', 'Green Match', 'Yellow Match'],
-    subtopics: ['Color Theory', 'Quick Intros', 'Seek & Find'],
-    color: 'bg-brand-orange text-white',
-    tag: '6:30 PM HUNT'
-  },
-  {
-    id: 'interests',
-    title: 'Foodies / Travelers',
-    icon: '✈️',
-    description: 'Favorite hobby or interest breakout groups.',
-    details: 'Whether you live for the next meal or the next flight, find your adventure partners here.',
-    groups: ['Global Foodies', 'Backpackers', 'Luxury Travel', 'Home Cooks'],
-    subtopics: ['Secret NYC Eats', 'Solo Travel', 'Street Food'],
-    color: 'bg-brand-mint text-black',
-    tag: '6:45 PM KICKOFF'
-  },
-  {
-    id: 'years',
-    title: 'Career Stages',
-    icon: '⏳',
-    description: 'Under 5, 6-10, or 10+ years professional groups.',
-    details: 'Find your cohort or seek mentorship from a different experience bracket.',
-    groups: ['Under 5 Years', '6-10 Years', '10+ Veterans', 'Peer Match'],
-    subtopics: ['Salary Negos', 'Mentorship', 'Growth Tips'],
-    color: 'bg-brand-blue text-black',
-    tag: '7:00 PM CAREER'
-  },
-  {
-    id: 'industry',
-    title: 'Industry Focus',
-    icon: '💼',
-    description: 'Marketing, Tech, Creative, or Finance?',
-    details: 'Deep dive into your specific field. Share insights, trends, and cross-industry collaborations.',
-    groups: ['Tech & Eng', 'Marketing & PR', 'Creative Arts', 'Finance & Accounting'],
-    subtopics: ['AI Impact', 'Creator Economy', 'Market Trends'],
-    color: 'bg-brand-lime text-black',
-    tag: '7:15 PM DEPTH'
-  },
-  {
-    id: 'grouppic',
-    title: 'Group Photo',
-    icon: '📸',
-    description: "Gather around and let's take a picture! Tag us @asian.networking.nyc",
-    details: 'Time to capture the memory of 5/15! Please head to the main backdrop for our group shot. Remember to tag us in your stories for a repost!',
-    groups: ['Group Selfie', 'Silly Poses', 'Main Stage', 'Candid Zone'],
-    subtopics: ['Smile!', 'Main Stage', 'Legacy shot'],
-    color: 'bg-brand-coral text-white',
-    tag: '7:30 PM SNAP'
-  },
-  {
-    id: 'emoji',
-    title: 'Emoji Match',
-    icon: '🦄',
-    description: "Find someone who sent the same last emoji!",
-    details: 'Visual communication challenge. Also a great time to give feedback on the night.',
-    groups: ['Emoji Match', 'Event Feedback', 'Sticker Share', 'Visual Story'],
-    subtopics: ['Digital Tone', 'Emoji Stories', 'Feedback Hub'],
-    color: 'bg-white text-black',
-    tag: '7:45 PM VIBES'
-  },
-  {
-    id: 'heritage',
-    title: 'Asian Heritage',
-    icon: '🌏',
-    description: 'Heritage and language breakout groups.',
-    details: 'A space to share experiences and connect through shared heritage and languages.',
-    groups: ['Chinese', 'Korean', 'Filipino', 'Indian', 'Vietnamese', 'Taiwanese', 'Japanese', 'Cantonese'],
-    subtopics: ['Dual Identity', 'Language Flow', 'Heritage Pride'],
-    color: 'bg-brand-pink text-white',
-    tag: '8:00 PM ROOTS'
-  },
-  {
-    id: 'mbti',
-    title: 'MBTI Hub',
-    icon: '🧠',
-    description: 'Are you an introvert or extrovert? Match your type.',
-    details: 'Discover how your MBTI personality type influences your professional networking style.',
-    groups: ['ENFJ', 'ENFP', 'ENTJ', 'ESFP', 'INFJ', 'INFP', 'INTJ'],
-    subtopics: ['Social Battery', 'First Impressions', 'Trait Match'],
-    color: 'bg-brand-orange text-white',
-    tag: '8:15 PM PERSONALITY'
-  },
-  {
-    id: 'commuter',
-    title: 'Commuter Hub',
-    icon: '📍',
-    description: 'Queens, Brooklyn, NJ, or office locations.',
-    details: 'Find locals from your neighborhood or coworkers from your office hub.',
-    groups: ['Queens', 'Brooklyn', 'NJ', 'LI', 'SI', 'JC', 'Manhattan'],
-    subtopics: ['Commute Hacks', 'Office Life', 'Local Gems'],
-    color: 'bg-brand-mint text-black',
-    tag: '8:30 PM LOCAL'
-  },
-  {
-    id: 'wrapup',
-    title: 'Wrap Up',
-    icon: '🏁',
-    description: 'Keep the conversations going and join our LinkedIn group!',
-    details: 'The official session ends, but the networking continues. Exchange contacts and join our LinkedIn community!',
-    groups: ['LinkedIn Group', 'Contact Swap', 'Final Drinks', 'Post-Event Hub'],
-    subtopics: ['Community Hub', 'Next Meetup', 'Feedback'],
-    color: 'bg-brand-yellow text-black',
-    tag: '8:45 PM FINAL'
-  }
-];
+import { BREAKOUT_THEMES, getSessionMinutes } from '../constants';
 
 const container = {
   hidden: { opacity: 0 },
@@ -138,6 +16,17 @@ const container = {
 const item = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 }
+};
+
+const COLOR_MAP: Record<string, string> = {
+  'brand-yellow': 'bg-brand-yellow',
+  'brand-orange': 'bg-brand-orange',
+  'brand-mint': 'bg-brand-mint',
+  'brand-blue': 'bg-brand-blue',
+  'brand-lime': 'bg-brand-lime',
+  'brand-coral': 'bg-brand-coral',
+  'white': 'bg-white',
+  'brand-pink': 'bg-brand-pink',
 };
 
 export function BreakoutGrid() {
@@ -156,11 +45,6 @@ export function BreakoutGrid() {
     }, 60000);
     return () => clearInterval(timer);
   }, []);
-
-  const getSessionMinutes = (tag: string) => {
-    const timeMatch = tag.match(/(\d+:\d+\s+[AP]M)/i);
-    return timeMatch ? parseTimeToMinutes(timeMatch[0]) : 0;
-  };
 
   return (
     <div className="flex flex-col gap-8" id="breakout-grid-container">
@@ -204,39 +88,55 @@ export function BreakoutGrid() {
           
           return (
             <motion.div variants={item} key={theme.id} className="h-full relative group">
+              {isCurrent && (
+                <motion.div 
+                  initial={{ scale: 0, rotate: -30, opacity: 0 }}
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                    rotate: [8, 10, 8],
+                    opacity: 1,
+                    filter: [
+                      'drop-shadow(0 0 0px rgba(255, 120, 0, 0))',
+                      'drop-shadow(0 0 20px rgba(255, 120, 0, 0.4))',
+                      'drop-shadow(0 0 0px rgba(255, 120, 0, 0))'
+                    ]
+                  }}
+                  transition={{ 
+                    opacity: { duration: 0.3, delay: 0.2 },
+                    scale: { repeat: Infinity, duration: 2, ease: "easeInOut" },
+                    rotate: { repeat: Infinity, duration: 3, ease: "easeInOut" },
+                    filter: { repeat: Infinity, duration: 2, ease: "easeInOut" }
+                  }}
+                  className="absolute -top-8 -right-8 z-50 bg-brand-orange text-white px-8 py-3 border-[6px] border-black font-black text-xl uppercase tracking-[0.1em] brutal-shadow-lg flex items-center gap-3 select-none pointer-events-none whitespace-nowrap"
+                >
+                  <Zap size={24} fill="white" className="animate-pulse" />
+                  <span className="drop-shadow-md">LIVE NOW</span>
+                </motion.div>
+              )}
+              
               <BrutalCard 
-                className={`${theme.color} h-full !p-0 relative transition-all duration-500 !brutal-shadow-lg !brutal-border-6
+                className={`${COLOR_MAP[theme.color] || 'bg-bg-primary'} ${theme.textColor} h-full !p-0 relative transition-all duration-500 !brutal-shadow-lg !brutal-border-6
                   ${isLocked ? 'grayscale opacity-30 blur-[4px] cursor-not-allowed' : 'cursor-default'} 
                   ${isCurrent ? 'ring-8 ring-border-primary ring-offset-4 scale-[1.02] z-10' : ''} 
                   ${isFinished ? 'opacity-90 saturate-[0.8]' : ''}`} 
                 id={`theme-card-${theme.id}`}
               >
-                <div className="p-8 flex flex-col h-full min-h-[520px]">
-                  {isCurrent && (
-                    <div className="absolute -top-4 -right-4 z-20 bg-text-primary text-bg-primary px-6 py-2 border-4 border-border-primary font-black text-sm uppercase tracking-widest rotate-6 brutal-shadow-sm flex items-center gap-2">
-                      <span className="w-2 h-2 bg-brand-mint rounded-full animate-pulse" />
-                      LIVE NOW
-                    </div>
-                  )}
+                <div className="flex flex-col h-full min-h-[460px]">
 
-                  {isFinished && (
-                    <div className="absolute -top-4 -right-4 z-20 bg-bg-primary text-text-primary px-4 py-2 border-4 border-border-primary font-black text-[10px] uppercase tracking-widest -rotate-2 brutal-shadow-sm flex items-center gap-2 opacity-80 group-hover:opacity-100 transition-opacity">
-                      HUB ACTIVE
-                    </div>
-                  )}
+
 
                   <div className={`inline-block ${isCurrent ? 'bg-brand-orange text-white animate-bounce' : isLocked ? 'bg-text-primary/20 text-text-primary/40' : 'bg-black text-white'} px-4 py-2 border-4 border-black font-black text-xs uppercase tracking-[0.2em] self-start mb-6 -rotate-1 brutal-shadow-sm rounded-xl transition-colors`}>
                     {theme.tag}
                   </div>
 
                   <div className="flex justify-between items-start mb-6">
-                    <div className="w-14 h-14 bg-bg-primary border-4 border-border-primary rounded-full flex items-center justify-center brutal-shadow text-3xl">
+                    <div className="w-14 h-14 bg-bg-primary text-text-primary border-4 border-border-primary rounded-full flex items-center justify-center brutal-shadow text-3xl shrink-0">
                       {isLocked ? '🔒' : theme.icon}
                     </div>
                     {!isLocked && (
                       <button 
                         onClick={() => setExpandedTheme(isExpanded ? null : theme.id)}
-                        className="bg-text-primary text-bg-primary p-2 rounded-xl border-4 border-border-primary hover:bg-bg-primary hover:text-text-primary transition-all brutal-shadow"
+                        className="bg-black text-white p-2 rounded-xl border-4 border-black hover:bg-white hover:text-black transition-all brutal-shadow shrink-0 font-black text-xs"
                       >
                         {isExpanded ? 'CLOSE' : 'INFO'}
                       </button>
@@ -260,14 +160,17 @@ export function BreakoutGrid() {
                       <>
                         {isExpanded ? (
                           <div className="flex flex-col gap-6">
-                            <p className="text-lg font-bold leading-tight bg-bg-primary/40 p-4 border-4 border-border-primary rounded-2xl italic">
+                            <p className={`text-lg font-bold leading-tight bg-black/10 p-4 border-4 border-black rounded-2xl italic ${theme.textColor}`}>
                               "{theme.details}"
                             </p>
                             <div>
                               <p className="text-[10px] font-black uppercase mb-2 opacity-50 tracking-widest">Pop-up Sub-topics:</p>
                               <div className="flex flex-wrap gap-2">
                                 {theme.subtopics.map((s, i) => (
-                                  <span key={i} className="bg-bg-primary border-2 border-border-primary px-3 py-1 rounded-full text-[10px] font-black uppercase">
+                                  <span 
+                                    key={i} 
+                                    className="bg-bg-primary text-text-primary border-2 border-border-primary px-3 py-1 rounded-full text-[10px] font-black uppercase brutal-shadow-sm whitespace-nowrap"
+                                  >
                                     {s}
                                   </span>
                                 ))}
@@ -355,16 +258,4 @@ export function BreakoutGrid() {
       </motion.div>
     </div>
   );
-}
-
-// Helper to parse time string
-function parseTimeToMinutes(timeStr: string) {
-  const match = timeStr.match(/(\d+):(\d+)\s+(AM|PM)/i);
-  if (!match) return 0;
-  let h = parseInt(match[1]);
-  const m = parseInt(match[2]);
-  const period = match[3].toUpperCase();
-  if (period === 'PM' && h < 12) h += 12;
-  if (period === 'AM' && h === 12) h = 0;
-  return h * 60 + m;
 }
