@@ -12,7 +12,7 @@ const BREAKOUT_THEMES = [
     details: 'The official kickoff. Use this time to meet the organizers and find your orientation.',
     groups: ['First Event', 'Returning', 'Referral', 'Social Media'],
     subtopics: ['Name Tags', 'Agenda Check', 'Event Vibe'],
-    color: 'bg-brand-yellow',
+    color: 'bg-brand-yellow text-black',
     tag: '6:00 PM START'
   },
   {
@@ -34,7 +34,7 @@ const BREAKOUT_THEMES = [
     details: 'Whether you live for the next meal or the next flight, find your adventure partners here.',
     groups: ['Global Foodies', 'Backpackers', 'Luxury Travel', 'Home Cooks'],
     subtopics: ['Secret NYC Eats', 'Solo Travel', 'Street Food'],
-    color: 'bg-brand-mint',
+    color: 'bg-brand-mint text-black',
     tag: '6:45 PM KICKOFF'
   },
   {
@@ -45,7 +45,7 @@ const BREAKOUT_THEMES = [
     details: 'Find your cohort or seek mentorship from a different experience bracket.',
     groups: ['Under 5 Years', '6-10 Years', '10+ Veterans', 'Peer Match'],
     subtopics: ['Salary Negos', 'Mentorship', 'Growth Tips'],
-    color: 'bg-brand-blue',
+    color: 'bg-brand-blue text-black',
     tag: '7:00 PM CAREER'
   },
   {
@@ -56,7 +56,7 @@ const BREAKOUT_THEMES = [
     details: 'Deep dive into your specific field. Share insights, trends, and cross-industry collaborations.',
     groups: ['Tech & Eng', 'Marketing & PR', 'Creative Arts', 'Finance & Accounting'],
     subtopics: ['AI Impact', 'Creator Economy', 'Market Trends'],
-    color: 'bg-brand-lime',
+    color: 'bg-brand-lime text-black',
     tag: '7:15 PM DEPTH'
   },
   {
@@ -67,7 +67,7 @@ const BREAKOUT_THEMES = [
     details: 'Time to capture the memory of 5/15! Please head to the main backdrop for our group shot. Remember to tag us in your stories for a repost!',
     groups: ['Group Selfie', 'Silly Poses', 'Main Stage', 'Candid Zone'],
     subtopics: ['Smile!', 'Main Stage', 'Legacy shot'],
-    color: 'bg-brand-coral',
+    color: 'bg-brand-coral text-black',
     tag: '7:30 PM SNAP'
   },
   {
@@ -78,7 +78,7 @@ const BREAKOUT_THEMES = [
     details: 'Visual communication challenge. Also a great time to give feedback on the night.',
     groups: ['Emoji Match', 'Event Feedback', 'Sticker Share', 'Visual Story'],
     subtopics: ['Digital Tone', 'Emoji Stories', 'Feedback Hub'],
-    color: 'bg-white',
+    color: 'bg-white text-black',
     tag: '7:45 PM VIBES'
   },
   {
@@ -89,7 +89,7 @@ const BREAKOUT_THEMES = [
     details: 'A space to share experiences and connect through shared heritage and languages.',
     groups: ['Chinese', 'Korean', 'Filipino', 'Indian', 'Vietnamese', 'Taiwanese', 'Japanese', 'Cantonese'],
     subtopics: ['Dual Identity', 'Language Flow', 'Heritage Pride'],
-    color: 'bg-brand-pink',
+    color: 'bg-brand-pink text-black',
     tag: '8:00 PM ROOTS'
   },
   {

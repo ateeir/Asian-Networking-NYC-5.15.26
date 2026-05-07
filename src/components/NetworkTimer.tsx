@@ -31,7 +31,7 @@ export function NetworkTimer() {
 
   return (
     <div className="flex flex-col gap-6" id="network-timer-container">
-      <div className="flex items-center justify-between font-black text-xs uppercase tracking-widest text-text-primary opacity-60">
+      <div className="flex items-center justify-between font-black text-xs uppercase tracking-widest text-text-primary opacity-80">
         <div className="flex items-center gap-2">
           <Timer size={16} className={isActive ? 'text-brand-orange animate-pulse' : ''} />
           <span>Timer Status</span>
@@ -64,14 +64,14 @@ export function NetworkTimer() {
             transition={{ duration: 1, ease: 'linear' }}
           />
 
-          <span className="text-xs font-black text-white uppercase mb-1 tracking-widest z-10">Remaining</span>
-          <span className="text-6xl font-black text-white leading-none z-10" id="timer-display">
+          <span className="text-xs font-black text-black uppercase mb-1 tracking-widest z-10">Remaining</span>
+          <span className="text-6xl font-black text-black leading-none z-10" id="timer-display">
             {formatTime(timeLeft).split(':')[0]}
           </span>
-          <span className="text-xl font-black text-white leading-none z-10">
+          <span className="text-xl font-black text-black leading-none z-10">
             :{formatTime(timeLeft).split(':')[1]}
           </span>
-          <span className="text-xs font-black text-white uppercase mt-1 tracking-widest z-10">Minutes</span>
+          <span className="text-xs font-black text-black uppercase mt-1 tracking-widest z-10">Minutes</span>
         </div>
         
         {isActive && (
