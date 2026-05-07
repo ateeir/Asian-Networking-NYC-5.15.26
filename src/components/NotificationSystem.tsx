@@ -7,7 +7,7 @@ export function NotificationTicker() {
   const notifications = [
     "🔥 SPECIAL GUEST: Tech Lead from Google just joined the 'Experience' zone!",
     "📱 Follow us on Instagram @asian.networking.nyc for event highlights!",
-    "🤝 Join our professional community on LinkedIn! Search 'Asian Networking NYC'.",
+    "🤝 Join our LinkedIn community for post-event networking!",
     "🍹 Event Special: $10 Yuzu Spritz (Yuzu Citrus, Simple, Sparkling) available all night!",
     "📸 Tag us in your stories @asian.networking.nyc for a chance to be featured!"
   ];
@@ -30,7 +30,18 @@ export function NotificationTicker() {
           className="flex items-center justify-center gap-4 px-4 font-black uppercase text-xs tracking-[0.2em]"
         >
           <AlertTriangle size={16} className="text-brand-orange animate-bounce" />
-          <span>{notifications[currentIndex]}</span>
+          {notifications[currentIndex].includes("LinkedIn") ? (
+            <a 
+              href="https://www.linkedin.com/groups/14650111/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:underline flex items-center gap-2"
+            >
+              <span>{notifications[currentIndex]}</span>
+            </a>
+          ) : (
+            <span>{notifications[currentIndex]}</span>
+          )}
           <AlertTriangle size={16} className="text-brand-orange animate-bounce" />
         </motion.div>
       </AnimatePresence>

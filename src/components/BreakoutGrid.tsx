@@ -23,7 +23,7 @@ const BREAKOUT_THEMES = [
     details: 'Colors are your guide. Find a match for your name tag color or the marker you used. Great way to meet everyone!',
     groups: ['Red Match', 'Blue Match', 'Green Match', 'Yellow Match'],
     subtopics: ['Color Theory', 'Quick Intros', 'Seek & Find'],
-    color: 'bg-brand-orange text-black',
+    color: 'bg-brand-orange text-white',
     tag: '6:30 PM HUNT'
   },
   {
@@ -67,7 +67,7 @@ const BREAKOUT_THEMES = [
     details: 'Time to capture the memory of 5/15! Please head to the main backdrop for our group shot. Remember to tag us in your stories for a repost!',
     groups: ['Group Selfie', 'Silly Poses', 'Main Stage', 'Candid Zone'],
     subtopics: ['Smile!', 'Main Stage', 'Legacy shot'],
-    color: 'bg-brand-coral text-black',
+    color: 'bg-brand-coral text-white',
     tag: '7:30 PM SNAP'
   },
   {
@@ -89,7 +89,7 @@ const BREAKOUT_THEMES = [
     details: 'A space to share experiences and connect through shared heritage and languages.',
     groups: ['Chinese', 'Korean', 'Filipino', 'Indian', 'Vietnamese', 'Taiwanese', 'Japanese', 'Cantonese'],
     subtopics: ['Dual Identity', 'Language Flow', 'Heritage Pride'],
-    color: 'bg-brand-pink text-black',
+    color: 'bg-brand-pink text-white',
     tag: '8:00 PM ROOTS'
   },
   {
@@ -100,7 +100,7 @@ const BREAKOUT_THEMES = [
     details: 'Discover how your MBTI personality type influences your professional networking style.',
     groups: ['ENFJ', 'ENFP', 'ENTJ', 'ESFP', 'INFJ', 'INFP', 'INTJ'],
     subtopics: ['Social Battery', 'First Impressions', 'Trait Match'],
-    color: 'bg-brand-orange text-black',
+    color: 'bg-brand-orange text-white',
     tag: '8:15 PM PERSONALITY'
   },
   {
@@ -205,7 +205,7 @@ export function BreakoutGrid() {
           return (
             <motion.div variants={item} key={theme.id} className="h-full relative group">
               <BrutalCard 
-                className={`${theme.color} h-full !p-0 relative transition-all duration-500 
+                className={`${theme.color} h-full !p-0 relative transition-all duration-500 !brutal-shadow-lg !brutal-border-6
                   ${isLocked ? 'grayscale opacity-30 blur-[4px] cursor-not-allowed' : 'cursor-default'} 
                   ${isCurrent ? 'ring-8 ring-border-primary ring-offset-4 scale-[1.02] z-10' : ''} 
                   ${isFinished ? 'opacity-90 saturate-[0.8]' : ''}`} 
@@ -225,7 +225,7 @@ export function BreakoutGrid() {
                     </div>
                   )}
 
-                  <div className={`inline-block ${isCurrent ? 'bg-text-primary text-bg-primary animate-bounce' : isLocked ? 'bg-text-primary/20 text-text-primary/40' : 'bg-brand-orange text-black'} px-4 py-2 border-4 border-border-primary font-black text-xs uppercase tracking-[0.2em] self-start mb-6 -rotate-1 brutal-shadow-sm rounded-xl transition-colors`}>
+                  <div className={`inline-block ${isCurrent ? 'bg-brand-orange text-white animate-bounce' : isLocked ? 'bg-text-primary/20 text-text-primary/40' : 'bg-black text-white'} px-4 py-2 border-4 border-black font-black text-xs uppercase tracking-[0.2em] self-start mb-6 -rotate-1 brutal-shadow-sm rounded-xl transition-colors`}>
                     {theme.tag}
                   </div>
 
@@ -281,15 +281,60 @@ export function BreakoutGrid() {
                             <div className="mt-auto flex flex-col gap-6">
                               {theme.groups.length > 0 ? (
                                 <div className="grid grid-cols-2 gap-2">
-                                  {theme.groups.map((group, i) => (
-                                    <div 
-                                      key={i} 
-                                      className="px-1 py-2 text-[9px] font-black text-center border-2 border-border-primary bg-bg-primary/40 hover:bg-text-primary hover:text-bg-primary transition-all cursor-pointer rounded-xl uppercase tracking-tighter leading-[1] min-h-[40px] flex items-center justify-center"
-                                      title={group}
-                                    >
-                                      <span>{group}</span>
-                                    </div>
-                                  ))}
+                                  {theme.groups.map((group, i) => {
+                                    const isLinkedIn = group === 'LinkedIn Group';
+                                    const isEmojiMatch = group === 'Emoji Match';
+                                    const isClickable = isLinkedIn || isEmojiMatch;
+                                    
+                                    const content = (
+                                      <motion.div 
+                                        key={i} 
+                                        whileHover={isClickable ? { scale: 1.08, rotate: isLinkedIn ? -2 : 2, zIndex: 20 } : {}}
+                                        whileTap={isClickable ? { scale: 0.92 } : {}}
+                                        animate={isClickable ? { 
+                                          y: [0, -4, 0],
+                                        } : {}}
+                                        transition={isClickable ? { 
+                                          y: { repeat: Infinity, duration: 2, ease: "easeInOut" },
+                                          scale: { type: "spring", stiffness: 400, damping: 10 }
+                                        } : {}}
+                                        className={`px-1 py-2 text-[9px] font-black text-center border-4 border-black bg-white text-black hover:bg-black hover:text-white transition-colors cursor-pointer rounded-xl uppercase tracking-tighter leading-[1] min-h-[44px] flex items-center justify-center brutal-shadow-sm ${isLinkedIn ? 'border-brand-blue ring-2 ring-brand-blue/20' : isEmojiMatch ? 'border-brand-orange ring-2 ring-brand-orange/20' : ''}`}
+                                        title={group}
+                                      >
+                                        <span>{group}</span>
+                                      </motion.div>
+                                    );
+
+                                    if (isLinkedIn) {
+                                      return (
+                                        <a 
+                                          key={i}
+                                          href="https://www.linkedin.com/groups/14650111/"
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="block no-underline"
+                                        >
+                                          {content}
+                                        </a>
+                                      );
+                                    }
+
+                                    if (isEmojiMatch) {
+                                      return (
+                                        <a 
+                                          key={i}
+                                          href="https://emoji-v2-reveal.vercel.app/"
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="block no-underline"
+                                        >
+                                          {content}
+                                        </a>
+                                      );
+                                    }
+
+                                    return content;
+                                  })}
                                 </div>
                               ) : (
                                 <div className="flex items-center justify-center py-6 border-4 border-border-primary border-dashed rounded-2xl bg-bg-primary/20">

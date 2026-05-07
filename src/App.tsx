@@ -105,13 +105,20 @@ export default function App() {
                 </div>
                 
                 <div className="flex flex-col items-center md:items-end gap-4 min-w-fit">
-                  <div className="bg-white border-4 border-black p-6 brutal-shadow flex flex-col items-center rotate-3">
-                    <Calendar className="w-10 h-10 mb-2" />
-                    <span className="text-3xl font-display font-black leading-none">MAY 30</span>
-                    <span className="text-sm font-black uppercase tracking-widest mt-1">NYC LAUNCH</span>
-                  </div>
                   <a 
-                    href="https://partiful.com/"
+                    href="https://partiful.com/e/skKm5mMoFjCMq0d0zylT"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block transition-transform hover:scale-110 active:scale-95"
+                  >
+                    <div className="bg-white text-black border-4 border-black p-6 brutal-shadow flex flex-col items-center rotate-3 hover:rotate-0 transition-transform cursor-pointer">
+                      <Calendar className="w-10 h-10 mb-2" />
+                      <span className="text-3xl font-display font-black leading-none">MAY 30</span>
+                      <span className="text-sm font-black uppercase tracking-widest mt-1">NYC LAUNCH</span>
+                    </div>
+                  </a>
+                  <a 
+                    href="https://partiful.com/e/skKm5mMoFjCMq0d0zylT"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-black text-white text-xl font-black uppercase py-4 px-8 border-4 border-black brutal-shadow transition-transform hover:scale-105 active:scale-95 text-center inline-block"

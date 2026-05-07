@@ -31,10 +31,10 @@ export function NetworkTimer() {
 
   return (
     <div className="flex flex-col gap-6" id="network-timer-container">
-      <div className="flex items-center justify-between font-black text-xs uppercase tracking-widest text-text-primary opacity-80">
+      <div className="flex items-center justify-between font-black text-xs uppercase tracking-widest text-text-primary">
         <div className="flex items-center gap-2">
-          <Timer size={16} className={isActive ? 'text-brand-orange animate-pulse' : ''} />
-          <span>Timer Status</span>
+          <Timer size={16} className={isActive ? 'text-brand-orange animate-pulse' : 'text-brand-blue'} />
+          <span className="text-brand-orange">Timer Status</span>
         </div>
         <div className="flex items-center gap-4">
           <button 

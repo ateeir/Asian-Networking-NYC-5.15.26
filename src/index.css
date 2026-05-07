@@ -6,13 +6,14 @@
   --font-display: "Space Grotesk", sans-serif;
 
   --color-brand-yellow-solid: #FFD60A;
-  --color-brand-orange: #FF4D00;
-  --color-brand-pink: #FF70A6;
-  --color-brand-blue: #70D6FF;
-  --color-brand-lime: #E9FF70;
-  --color-brand-mint: #8BFFD1;
-  --color-brand-purple: #D5AAFF;
-  --color-brand-coral: #FF9770;
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-lime: var(--brand-lime);
+  --color-brand-mint: var(--brand-mint);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-coral: var(--brand-coral);
+  --color-brand-yellow: var(--brand-yellow);
   
   --color-bg-primary: var(--bg-primary);
   --color-text-primary: var(--text-primary);
@@ -25,13 +26,27 @@
     --text-primary: #000000;
     --border-primary: #000000;
     --brand-yellow: #FFD60A;
+    --brand-orange: #FF4D00;
+    --brand-pink: #FF70A6;
+    --brand-blue: #70D6FF;
+    --brand-lime: #E9FF70;
+    --brand-mint: #8BFFD1;
+    --brand-purple: #D5AAFF;
+    --brand-coral: #FF9770;
   }
 
   .dark {
     --bg-primary: #000000;
     --text-primary: #FFFFFF;
     --border-primary: #FFD60A;
-    --brand-yellow: #1A1A1A;
+    --brand-yellow: #FFD60A; /* Reverting yellow from #1A1A1A to keep it vibrant */
+    --brand-orange: #FF5C1A; /* Slightly lighter/more neon */
+    --brand-pink: #FF85B3;
+    --brand-blue: #8ADEFF;
+    --brand-lime: #F0FF94;
+    --brand-mint: #A3FFDC;
+    --brand-purple: #E0C2FF;
+    --brand-coral: #FFA887;
   }
 
   body {
