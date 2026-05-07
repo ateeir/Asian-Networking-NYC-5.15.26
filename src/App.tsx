@@ -9,7 +9,7 @@ import { BrutalCard } from './components/BrutalCard';
 
 export default function App() {
   const [participants, setParticipants] = useState(428);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     // Sync theme with body class for portal and global styles
