@@ -10,7 +10,7 @@ export const BREAKOUT_THEMES = [
     subtopics: ['Name Tags', 'Agenda Check', 'Event Vibe'],
     color: 'brand-yellow',
     textColor: 'text-black',
-    tag: '6:00 PM START'
+    tag: '5:30 PM START'
   },
   {
     id: 'scavenger',
@@ -22,7 +22,7 @@ export const BREAKOUT_THEMES = [
     subtopics: ['Color Theory', 'Quick Intros', 'Seek & Find'],
     color: 'brand-orange',
     textColor: 'text-white',
-    tag: '6:30 PM HUNT'
+    tag: '5:45 PM HUNT'
   },
   {
     id: 'interests',
@@ -34,7 +34,7 @@ export const BREAKOUT_THEMES = [
     subtopics: ['Secret NYC Eats', 'Solo Travel', 'Street Food'],
     color: 'brand-mint',
     textColor: 'text-black',
-    tag: '6:45 PM KICKOFF'
+    tag: '6:30 PM KICKOFF'
   },
   {
     id: 'years',
@@ -46,7 +46,19 @@ export const BREAKOUT_THEMES = [
     subtopics: ['Salary Negos', 'Mentorship', 'Growth Tips'],
     color: 'brand-blue',
     textColor: 'text-black',
-    tag: '7:00 PM CAREER'
+    tag: '6:45 PM CAREER'
+  },
+  {
+    id: 'mentorship',
+    title: 'Mentorship & Advice',
+    icon: '🤝',
+    description: 'Find someone outside of your group for mentorship.',
+    details: 'Find someone outside of your group (good for mentorship) to share insights, trends, and cross-industry collaborations.',
+    groups: ['Mentors', 'Mentees', 'Peer Advice', 'Industry Insights'],
+    subtopics: ['Career Growth', 'Networking Tips', 'Mindset Switch'],
+    color: 'brand-purple',
+    textColor: 'text-black',
+    tag: '7:00 PM MENTORSHIP'
   },
   {
     id: 'industry',

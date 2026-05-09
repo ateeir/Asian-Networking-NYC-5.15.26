@@ -27,6 +27,7 @@ const COLOR_MAP: Record<string, string> = {
   'brand-coral': 'bg-brand-coral',
   'white': 'bg-white',
   'brand-pink': 'bg-brand-pink',
+  'brand-purple': 'bg-brand-purple',
 };
 
 export function BreakoutGrid() {
